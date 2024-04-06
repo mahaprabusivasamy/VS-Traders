@@ -1,0 +1,37 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.head{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(39, 14, 62);
+}
+.head .logo{
+    padding: 10px;
+    color: white;
+}
+.head nav ul{
+    margin: 10px;
+    padding-top: 10px;
+}
+.head nav ul .li{
+    padding: 6px;
+    border-radius: 10px;
+    color: rgb(66, 66, 66);
+    background-color: aliceblue;
+    margin: 10px 10px;
+   
+}
+.head nav ul .li:hover{
+    background-color: rgb(139, 238, 255);
+}
+
+
+.image{
+    width: 300px;
+    height: 300px;
+}
