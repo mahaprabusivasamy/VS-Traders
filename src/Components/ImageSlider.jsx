@@ -12,7 +12,7 @@ export default function ImageSlider() {
       // Calculate the index of the next slide
       const nextIndex = (currentImageIndex + 1) % images.length;
       setCurrentImageIndex(nextIndex);
-    }, 10000); // Change slide every 10 seconds
+    }, 4000); // Change slide every 10 seconds
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
