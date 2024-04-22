@@ -5,6 +5,8 @@ import Fish_seafoods from '../pages/Fish_seafoods'
 import Mutton from '../pages/Mutton'
 import Contact from '../pages/Contact'
 import Poultry from '../pages/Poultry'
+import Admin from '../Components/Admin/Admin'
+import Dashboard from '../Components/Admin/Dashboard'
 
 export default function RouteHeader() {
   return (
@@ -15,6 +17,8 @@ export default function RouteHeader() {
         <Route path='/Mutton' element={<Mutton/>}></Route>
         <Route path='/Poultry' element={<Poultry/>}></Route>
         <Route path='/Contact' element={<Contact/>}></Route>
+        <Route path='/Admin' element={<Admin/>}></Route>
+        <Route path='/Dashboard' element={<Dashboard/>}></Route>
     </Routes>
     </BrowserRouter>
   )

@@ -15,6 +15,7 @@ export default function Header() {
             <Link  className='li' to={'/Mutton'}>Mutton</Link>
             <Link  className='li' to={'/Poultry'}>Poultry</Link>
             <Link  className='li' to={'/Contact'}>Contact</Link>
+            <Link  className='li' to={'/Admin'}>Admin</Link>
         </ul>
     </nav>
 </div>
