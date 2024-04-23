@@ -1,7 +1,7 @@
 import React from 'react';
 import './Style.css';
 
-export default function Availabilty() {
+export default function Availabilty(props) {
   // Function to get the current time in "HH:mm" format
   const getCurrentTime = () => {
     const currentDate = new Date();
@@ -22,13 +22,13 @@ export default function Availabilty() {
         <div className="box">
           <p>Availabity</p>
           <ul>
-         
-            <li className={isTimeInRange('05:00', '07:00') ? 'livetime' : ''}>5-7 Am - available</li>
-            <li className={isTimeInRange('07:00', '10:00') ? 'livetime' : ''}>7-10 Am - available</li>
-            <li className={isTimeInRange('10:00', '11:59') ? 'livetime' : ''}>10-11:59 AM - available</li>
-            <li className={isTimeInRange('12:00', '15:00') ? 'livetime' : ''}>12-3 pm - available</li>
-            <li className={isTimeInRange('15:00', '17:00') ? 'livetime' : ''}>3-5 Pm - available</li>
-            <li className={isTimeInRange('17:00', '20:00') ? 'livetime' : ''}>5-8 Pm - available</li>
+            
+            <li className={isTimeInRange('05:00', '07:00') ? 'livetime' : ''}>5-7 Am - {props.avail}</li>
+            <li className={isTimeInRange('07:00', '10:00') ? 'livetime' : ''}>7-10 Am - {props.avail}</li>
+            <li className={isTimeInRange('10:00', '11:59') ? 'livetime' : ''}>10-11:59 AM - {props.avail}</li>
+            <li className={isTimeInRange('12:00', '15:00') ? 'livetime' : ''}>12-3 pm -{props.avail}</li>
+            <li className={isTimeInRange('15:00', '17:00') ? 'livetime' : ''}>3-5 Pm - {props.avail}</li>
+            <li className={isTimeInRange('17:00', '20:00') ? 'livetime' : ''}>5-8 Pm - {props.avail}</li>
           </ul>
         </div>
       </div>
