@@ -66,7 +66,7 @@ const FormDataComponent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      
+        <h2>Price Update form</h2>
       <div>
         <label htmlFor="date">Date:</label>
         <DatePicker

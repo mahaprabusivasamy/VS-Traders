@@ -26,11 +26,13 @@ const LoginForm = () => {
     <div className="signin">
     <div className='content'>
 
-      <h2 className='headlogin'>Login</h2>
+     
       {loggedIn ? ( // Conditionally render Dashboard if logged in
-        <Dashboard />
+   
+       <Dashboard />
       ) : (
         <form onSubmit={handleSubmit}>
+           <h2 className='headlogin'>Login</h2>
           <div>
             <label htmlFor="username">Username:</label> <br />
             <input 

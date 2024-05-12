@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FormDataComponent from './FormDataComponent';
-
+import Avail from './AvailabilityForm'
 function Dashboard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [availabilityData, setAvailabilityData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -14,6 +15,9 @@ function Dashboard() {
         // Sort the data based on the date in descending order
         const sortedData = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
         setData(sortedData);
+
+        const availabilityResponse = await axios.get('https://vstrader-api.onrender.com/get-available');
+        setAvailabilityData(availabilityResponse.data);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -32,6 +36,41 @@ function Dashboard() {
     return <div>Error: {error.message}</div>;
   }
 
+  const displayAvailabilityData = () => {
+    const lastUpdatedEntry = availabilityData[0]; // Assuming the first entry is the last updated one
+  
+    if (!lastUpdatedEntry) {
+      return <div>No availability data available</div>;
+    }
+  
+    const columns = Object.keys(lastUpdatedEntry).filter(key => key !== '_id'); // Get all column names
+    const columnLabels = {
+      goat: 'Goat',
+      sheep: 'Sheep',
+      'country-chicken': 'Country Chicken',
+      'broiler-chicken': 'Broiler Chicken',
+      crab: 'Crab',
+      prawn: 'Prawn'
+    }; // Define labels for each schema name
+  
+    return (
+      <div>
+        <h2>Availability</h2>
+        <table>
+          <tbody>
+            {columns.map((column, index) => (
+              <tr key={index}>
+                <td>{columnLabels[column]}</td>
+                <td>{lastUpdatedEntry[column]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+  
+  
   // Function to display prices based on the latest entry
   const displayLatestPrices = () => {
     const count=(data.length)-1
@@ -108,11 +147,18 @@ function Dashboard() {
 
   return (
     <>
-      <div className='table'>
-        {displayLatestPrices()}
-      </div>
-      <div className="form">
-        <FormDataComponent />
+        <h2 className='ap'>Admin Dashboard</h2>
+      <div className="whole">
+        <div className="table">
+          {displayLatestPrices()}
+          {displayAvailabilityData()}
+        </div>
+        <div className="form">
+          <FormDataComponent />
+        
+        </div>
+        <Avail/>
+        
       </div>
     </>
   );

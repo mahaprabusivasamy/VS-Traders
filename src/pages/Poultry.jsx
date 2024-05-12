@@ -47,9 +47,9 @@ export default function Poultry() {
     <>
       <Header />
       <div className="Muttoncontainer">
-        <div className="container1">
+        {/* <div className="container1"> */}
           <Image1 pic={PoultryImage} />
-        </div>
+        {/* </div> */}
         <PriceContainer
           name1={'Country Hen'}
           price1={countryHenPrice}

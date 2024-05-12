@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './Style.css'; // Import your CSS file
-
+import './Style.css'; 
 export default function ImageSlider() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // Calculate the index of the next slide
+    
       const nextIndex = (currentImageIndex + 1) % images.length;
       setCurrentImageIndex(nextIndex);
-    }, 5000); // Change slide every 5 seconds
-
-    // Clean up the interval on component unmount
+    }, 2000); 
+   
+    
     return () => clearInterval(intervalId);
   }, [setCurrentImageIndex]);
 

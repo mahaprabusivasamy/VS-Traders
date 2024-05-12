@@ -1,24 +1,37 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './Header.css'
-export default function Header() {
-  return (
-<>
-<div className="head">
-    <div className="logo">
-       <h1>VS TRADERs</h1>
-    </div>
-    <nav>
-        <ul>
-            <Link className='li' to={'/'}>Home</Link>
-            <Link  className='li' to={'/Fish_seafoods'}>Fish&sea</Link>
-            <Link  className='li' to={'/Mutton'}>Mutton</Link>
-            <Link  className='li' to={'/Poultry'}>Poultry</Link>
-            <Link  className='li' to={'/Contact'}>Contact</Link>
-            <Link  className='li' to={'/Admin'}>Admin</Link>
-        </ul>
-    </nav>
-</div>
-</>
-  )
-}
+// Header.js
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
+
+const Header = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    return (
+        <>
+            <div className="head">
+                <div className="logo">
+                    <h1>VS TRADERs</h1>
+                    
+                </div>
+                {/* <button className="sidebar-toggle" onClick={toggleSidebar}>☰</button> */}
+                <nav className={`nav-menu ${isSidebarOpen ? 'active' : ''}`}>
+                    <ul>
+                        <li><Link className='li' to={'/'}><span>Home</span></Link></li>
+                        <li><Link className='li' to={'/Fish_seafoods'}><span>SeaMeats</span></Link></li>
+                        <li><Link className='li' to={'/Mutton'}><span>Mutton</span></Link></li>
+                        <li><Link className='li' to={'/Poultry'}><span>chicken</span></Link></li>
+                        <li><Link className='li' to={'/Contact'}><span>Contact</span></Link></li>
+                        <li><Link className='li' to={'/Admin'}><span>Home</span></Link></li>
+                    </ul>
+                </nav>
+            </div>
+        </>
+    );
+};
+
+export default Header;

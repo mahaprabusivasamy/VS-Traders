@@ -1,5 +1,5 @@
 
-.image img{
+/*.image img{
     width: 700px;
     height: 60vh;
 }
@@ -22,6 +22,7 @@ height: auto;
 
 /* price conatiner */
 /* mutton */
+/*
 .Muttoncontainer{
     display: flex;
     flex-direction: row;
@@ -31,7 +32,7 @@ height: auto;
     
     display: block;
     margin-top: 30px;
-    /* margin-left: 35%; */
+  
     margin: 40px;
 }
 .date{
@@ -108,6 +109,26 @@ height: auto;
 
 }
 
+@media screen and (max-width:900px){
+    .settle{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .breedimage{
+        display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .breedpara p{
+        font-size: 14px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: rgb(199, 255, 246);
+    }
+}
+@keyframes left {
+    
+    
+}
 /* Image slider */
 
 /* .imageslider .slide{
@@ -124,7 +145,7 @@ height: auto;
     flex-direction: row;
 } */
 /* Style.css */
-.imageslider {
+/* .imageslider {
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -136,12 +157,43 @@ height: auto;
   
   .slide img {
     flex: 1;
-    object-fit: cover; /* Ensure the image fills the entire container while maintaining aspect ratio */
+    object-fit: cover; 
     width: 100%;
     height: 100%;
   }
-  
+   */
 
+   /* chagpt */
+
+   .imageslider {
+    width: 100%;
+    height: 400px; /* Set a fixed height for the slider container */
+    overflow: hidden;
+    position: relative; /* Ensure the slider container maintains its position */
+  }
+  
+  .slide {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+    height: 100%; /* Ensure the slider takes up the full height of the container */
+  }
+  
+  .slide img {
+    flex: 1;
+    object-fit: cover; /* Ensure the image fills the entire container while maintaining aspect ratio */
+    width: 100%;
+    height: 100%;
+    display: block; /* Ensure images behave as block elements */
+    margin: auto; /* Center the images vertically and horizontally */
+  }
+  
+  /* Media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    .slide img {
+      height: auto; /* Reset height to auto for responsive behavior */
+    }
+  }
+  
 /* about */
 
 .about p{
@@ -153,12 +205,15 @@ height: auto;
 }
 
 /*  */
+/*
+
 .availabilty {
   display: flex;
   justify-content: center;
-  /* margin-left: 4%; */
+
 
 }
+
 .availabilty .box{
     margin-top: 20px;
     width: fit-content;
@@ -187,11 +242,136 @@ height: auto;
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-}
+}*/
 .contactInfo{
     margin-top: 10%;
 }
 .contactInfo h1{
     font-size: 25;
     padding: 10px;
+}
+
+
+/* chat gpt */
+/* Base styles */
+.Muttoncontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    justify-content: center; /* Center items horizontally */
+}
+
+.image{
+    width: calc(33.33% - 20px); /* Adjust width to fit three components in a row */
+    margin: 2px; 
+}
+
+.priceContainer,
+.availabilty {
+    width: calc(28.33% - 20px); /* Adjust width to fit three components in a row */
+    margin-left: 20px; /* Add some margin between components */
+}
+
+.priceContainer {
+    /* margin-top: 50px;
+    margin-left: 60px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+.date {
+    background-color: rgb(255, 195, 195);
+    border-radius: 10px;
+    text-align: center;
+    padding: 3px;
+    margin: 10px auto; /* Center horizontally */
+}
+
+.price {
+    width: 100%; /* Take full width */
+    padding: 10px;
+    background-color: rgb(170, 255, 180);
+    border-radius: 20px;
+}
+
+.var {
+    padding: 10px;
+}
+
+.var h1 {
+    font-size: 18px;
+    padding-bottom: 5px;
+    font-weight: 300;
+}
+
+.var .pprice {
+    font-size: 35px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.var .highlow {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.image img {
+    max-width: 100%; /* Ensure image responsiveness */
+    height: auto;
+    margin-top: 20px;
+}
+
+.availabilty {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.availabilty .box {
+    /* margin-top: 20px; */
+    width: fit-content;
+    height: 300px;
+    padding: 30px;
+    background-color: rgb(135, 135, 135);
+    border-radius: 20px;
+}
+
+.availabilty .box li {
+    color: white;
+    padding: 4px;
+}
+
+.availabilty .box p {
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+}
+
+.availabilty .box .livetime {
+    color: rgb(18, 18, 18);
+    background-color: rgb(254, 38, 26);
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 800px) {
+    .image,
+    .priceContainer,
+    .availabilty {
+        width: calc(50% - 20px); /* Adjust width to fit two components in a row */
+    }
+
+    
+}
+
+@media screen and (max-width: 480px) {
+    .image,
+    .priceContainer,
+    .availabilty {
+        width: 100%; /* Set width to 100% for single column layout */
+    }
 }

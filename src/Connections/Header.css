@@ -1,45 +1,71 @@
-*{
-    margin: 0px;
-    padding: 0px;
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
 }
-.head{
+
+/* Header Styles */
+.head {
+    background-color: #270e3e;
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
-    background-color: rgb(39, 14, 62);
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 }
-.head .logo{
-    padding: 10px;
+
+.head .logo {
     color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
-.head nav ul{
-    margin: 10px;
-    padding-top: 10px;
+
+.head nav ul {
+    display: flex;
+    color: aliceblue;
 }
-.head nav ul .li{
-    padding: 6px;
+
+.head nav ul .li {
+    margin-left: 20px;
+}
+
+.head nav ul .li span {
+    color: rgb(0, 0, 0);
+    padding: 8px;
     border-radius: 10px;
-    color: rgb(66, 66, 66);
-    background-color: aliceblue;
-    margin: 10px 10px;
-   
-}
-.head nav ul .li:hover{
-    background-color: rgb(139, 238, 255);
+    transition: background-color 0.3s ease;
+    background-color: #ffffff;
 }
 
-
-.image{
-    width: 300px;
-    height: 300px;
+.head nav ul .li a:hover {
+    background-color: #8beaff;
 }
 
- /* a{
-    background-color: #ff7200;
-    color: black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 100%;
-} */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .head .logo {
+        margin-bottom: 20px;
+    }
+    
+
+    .head nav ul {
+        flex-direction: column;
+        text-align: center;
+        
+    }
+
+    .head nav ul .li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
