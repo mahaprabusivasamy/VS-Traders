@@ -59,13 +59,25 @@
     
 
     .head nav ul {
-        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
         text-align: center;
-        
     }
 
-    .head nav ul .li {
+    .head nav ul .li span {
+        color: #ffffff;
+        background-color:#270e3e;
+      
+        padding: 3px;
+       
+    }
+    .head nav ul .li span:hover{
+       border-color: #8beaff;
+       border-bottom: 2px solid gray;
+    }
+    
+    /* .head nav ul .li {
         margin-left: 0;
         margin-bottom: 10px;
-    }
+    } */
 }
