@@ -1,0 +1,57 @@
+/* CSS for Form */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 2%;
+  }
+  
+  .form-container h2 {
+    text-align: center;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-container input[type="email"],
+  .form-container input[type="tel"],
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media only screen and (max-width: 600px) {
+    .form-container {
+      margin-top: -10%;
+      max-width: 55%;
+    }
+
+  }
+  @media only screen and (max-width: 400px) {
+    .form-container {
+      max-width: 50%;
+    }
+  }
+  

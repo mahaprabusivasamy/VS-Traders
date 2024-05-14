@@ -1,18 +1,41 @@
+
 body{
+
+ 
     background-color: rgb(255, 255, 255);
 }
 .contact h1{
     text-align: center;
+    padding: 20px;
+    
+}
+.contact{
+    margin-top: -30px;
 }
 
 .contact-container{
-  
+
+  margin: 0px;
     padding: 30px;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 
 }
-
+@media screen and (max-width:700px){
+    .contact-container{
+        display: flex;
+        flex-direction: column;
+    }
+    /* .contact-container .st{
+        margin: 30px;
+        font-size: 18px;
+    } */
+    .map{
+        margin: 10%;
+        width: 50%;
+    }
+}
 /* mutton */
 /* .Muttoncontainer{
     position: relative;

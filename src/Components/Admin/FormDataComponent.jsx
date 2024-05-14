@@ -62,6 +62,7 @@ const FormDataComponent = () => {
         crabPrice: '',
         prawnPrice: ''
       });
+      alert('data inserted suceesfully');
   };
 
   return (

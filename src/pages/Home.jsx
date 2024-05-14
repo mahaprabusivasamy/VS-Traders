@@ -5,6 +5,7 @@ import ImageSlider from '../Components/ImageSlider'
 import slide from '../assets/breeds/prawn.jpg'
 import TextHead from '../Components/TextHead'
 import About from '../Components/About'
+import Footer from '../Components/Footer'
 
 const array=[{
   "id":"1",
@@ -43,7 +44,7 @@ export default function Home() {
       <About/>
 
 
-
+    <Footer/>
    </>
   )
 }

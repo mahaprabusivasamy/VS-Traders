@@ -11,12 +11,18 @@ import countryhen from '../assets/breeds/country_hen.jpg';
 import broiler from '../assets/breeds/broiler.jpg';
 import Availabilty from '../Components/Availabilty';
 import axios from 'axios';
+import Footer from '../Components/Footer';
 
 export default function Poultry() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [highestGoatPrice, setHighestGoatPrice] = useState(-Infinity);
+  const [lowestGoatPrice, setLowestGoatPrice] = useState(Infinity);
+  const [highestSheepPrice, setHighestSheepPrice] = useState(-Infinity);
+  const [lowestSheepPrice, setLowestSheepPrice] = useState(Infinity);
   const [error, setError] = useState(null);
-
+  const [data2 ,setData2]=useState([]);
+const [broilera,setBroilera]=useState(String)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,6 +38,52 @@ export default function Poultry() {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await axios.get('https://vstrader-api.onrender.com/get-available');
+        setData2(response.data);
+        // setLoading(false);
+      } catch (error) {
+        console.error('Error fetching availability:', error);
+      }
+    };
+
+    fetchAvailability();
+  }, []);
+  useEffect(() => {
+    // Extracting highest and lowest prices
+   
+    let maxGoatPrice = -Infinity;
+    let minGoatPrice = Infinity;
+    let maxSheepPrice = -Infinity;
+    let minSheepPrice = Infinity;
+   
+    data.forEach(item => {
+      const goatPrice = item.chicken['broiler-price'];
+      const sheepPrice = item.chicken['countrychicken-price'];
+
+      if (goatPrice > maxGoatPrice) {
+        maxGoatPrice = goatPrice;
+      }
+      if (goatPrice < minGoatPrice) {
+        minGoatPrice = goatPrice;
+      }
+      if (sheepPrice > maxSheepPrice) {
+        maxSheepPrice = sheepPrice;
+      }
+      if (sheepPrice < minSheepPrice) {
+        minSheepPrice = sheepPrice;
+      }
+    });
+
+    setHighestGoatPrice(maxGoatPrice);
+    setLowestGoatPrice(minGoatPrice);
+    setHighestSheepPrice(maxSheepPrice);
+    setLowestSheepPrice(minSheepPrice);
+  }, [data]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -42,6 +94,12 @@ export default function Poultry() {
   const len=(data.length)-1
   const countryHenPrice = data.length > 0 ? data[len].chicken['countrychicken-price'] : 'Loading...';
   const broilerPrice = data.length > 0 ? data[len].chicken['broiler-price'] : 'Loading...';
+  const l2=(data2.length)-1;
+  const goatAvailability = data2.length > 0 ? data2[l2]['country-chicken'] : 'loading';
+const sheepAvailability = data2.length > 0 ? data2[l2]['broiler-chicken'] : 'loading';
+
+
+ 
 
   return (
     <>
@@ -53,14 +111,14 @@ export default function Poultry() {
         <PriceContainer
           name1={'Country Hen'}
           price1={countryHenPrice}
-          low1={'599'}
-          high1={'900'}
+          low1={lowestSheepPrice}
+          high1={highestSheepPrice}
           name2={'Broiler'}
           price2={broilerPrice}
-          low2={'199'}
-          high2={'259'}
+          low2={lowestGoatPrice}
+          high2={highestGoatPrice}
         />
-        <Availabilty avail={'availablE'} />
+        <Availabilty avail={'availablE'} gv={goatAvailability} sv={sheepAvailability}/>
       </div>
       <div className="quote">
         <Quotes text={'In a world full of birds, be a chicken—because everyone loves chicken.'} />
@@ -78,6 +136,7 @@ export default function Poultry() {
         }
         img2={broiler}
       />
+      <Footer/>
     </>
   );
 }

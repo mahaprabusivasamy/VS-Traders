@@ -11,11 +11,18 @@ import crab from '../assets/breeds/crab.jpg';
 import prawn from '../assets/breeds/prawn.jpg';
 import ImgPara from '../Components/ImgPara';
 import Availabilty from '../Components/Availabilty';
+import Footer from '../Components/Footer';
 
 export default function Fish_seafoods() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState(null);
+  const [highestGoatPrice, setHighestGoatPrice] = useState(-Infinity);
+  const [lowestGoatPrice, setLowestGoatPrice] = useState(Infinity);
+  const [highestSheepPrice, setHighestSheepPrice] = useState(-Infinity);
+  const [lowestSheepPrice, setLowestSheepPrice] = useState(Infinity);
+  const [data2 ,setData2]=useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +38,37 @@ export default function Fish_seafoods() {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    // Extracting highest and lowest prices
+    let maxGoatPrice = -Infinity;
+    let minGoatPrice = Infinity;
+    let maxSheepPrice = -Infinity;
+    let minSheepPrice = Infinity;
+   
+    data.forEach(item => {
+      const goatPrice = item.fish['crab-price'];
+      const sheepPrice = item.fish['prawn-price'];
+
+      if (goatPrice > maxGoatPrice) {
+        maxGoatPrice = goatPrice;
+      }
+      if (goatPrice < minGoatPrice) {
+        minGoatPrice = goatPrice;
+      }
+      if (sheepPrice > maxSheepPrice) {
+        maxSheepPrice = sheepPrice;
+      }
+      if (sheepPrice < minSheepPrice) {
+        minSheepPrice = sheepPrice;
+      }
+    });
+  
+
+    setHighestGoatPrice(maxGoatPrice);
+    setLowestGoatPrice(minGoatPrice);
+    setHighestSheepPrice(maxSheepPrice);
+    setLowestSheepPrice(minSheepPrice);
+  }, [data]);
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -39,8 +77,28 @@ export default function Fish_seafoods() {
   // if (error) {
   //   return <div>Error: {error.message}</div>;
   // }
-  const len=(data.length)-1
 
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await axios.get('https://vstrader-api.onrender.com/get-available');
+        setData2(response.data);
+        // setLoading(false);
+      } catch (error) {
+        console.error('Error fetching availability:', error);
+      }
+    };
+
+    fetchAvailability();
+  }, []);
+  
+  const l2=(data2.length)-1;
+  const crabAvailability = data2.length > 0 ? data2[l2]['crab'] : 'loading';
+  const prawnAvailability = data2.length > 0 ? data2[l2]['prawn'] : 'loading';
+  
+  // console.log(crabAvailability,prawnAvailability)
+  const len=(data.length)-1
+// alert(crabAvailability)
   return (
     <>
       <Header />
@@ -49,14 +107,16 @@ export default function Fish_seafoods() {
         <PriceContainer
           name1={'Prawn'}
           price1={data.length > 0 ? data[len].fish['prawn-price'] : 'Loading...'}
-          low1={'499'}
-          high1={'809'}
+          low1={lowestSheepPrice}
+          high1={highestSheepPrice}
           name2={'Crab'}
           price2={data.length > 0 ? data[len].fish['crab-price'] : 'Loading...'}
-          low2={'699'}
-          high2={'1200'}
+          low2={lowestGoatPrice}
+          high2={highestGoatPrice}
         />
-        <Availabilty avail={'availablE'} />
+        <Availabilty avail={'availablE'} 
+        gv={crabAvailability} sv={prawnAvailability}
+        />
       </div>
       <div className="quote">
         <Quotes text={'In a world where you can be anything, be kind... and share your seafood'} />
@@ -74,6 +134,8 @@ export default function Fish_seafoods() {
         }
         img2={prawn}
       />
+
+      <Footer/>
     </>
   );
 }

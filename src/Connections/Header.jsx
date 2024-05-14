@@ -26,7 +26,7 @@ const Header = () => {
                         <li><Link className='li' to={'/Mutton'}><span>Mutton</span></Link></li>
                         <li><Link className='li' to={'/Poultry'}><span>chicken</span></Link></li>
                         <li><Link className='li' to={'/Contact'}><span>Contact</span></Link></li>
-                        <li><Link className='li' to={'/Admin'}><span>Home</span></Link></li>
+                        <li><Link className='li' to={'/Admin'}><span>Admin</span></Link></li>
                     </ul>
                 </nav>
             </div>

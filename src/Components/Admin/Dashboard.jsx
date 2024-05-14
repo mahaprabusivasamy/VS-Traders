@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FormDataComponent from './FormDataComponent';
 import Avail from './AvailabilityForm'
+import FormSubmissions from './FormSubmission';
 function Dashboard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -159,6 +160,12 @@ function Dashboard() {
         </div>
         <Avail/>
         
+       
+      </div>
+      <div className="table cc">
+        
+
+      <FormSubmissions/>
       </div>
     </>
   );

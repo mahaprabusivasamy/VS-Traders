@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dashboard from './Dashboard';
 import './Login.css'
+import './Loginform.css'
 
 const LoginForm = () => {
   // State variables to store the username, password, and logged-in status
@@ -31,26 +32,28 @@ const LoginForm = () => {
    
        <Dashboard />
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form className='sform' onSubmit={handleSubmit}>
            <h2 className='headlogin'>Login</h2>
           <div>
-            <label htmlFor="username">Username:</label> <br />
+            <label className='user' htmlFor="username">Username:</label> <br />
             <input 
               type="text" 
               id="username" 
               value={username} 
               onChange={(e) => setUsername(e.target.value)} 
               required 
+              className='inp2'
             />
           </div>
           <div>
-            <label htmlFor="password">Password:</label> <br />
+            <label className='pass' htmlFor="password">Password:</label> <br />
             <input 
               type="password" 
               id="password" 
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
-              required 
+              required  
+              className='inp1'
             />
           </div>
           <button type="submit">Login</button>

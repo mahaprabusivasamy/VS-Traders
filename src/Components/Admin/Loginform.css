@@ -1,0 +1,54 @@
+/* Loginform.css */
+
+.sform {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .headlogin {
+    margin-bottom: 20px;
+  }
+  
+  .user,
+  .pass {
+    font-weight: bold;
+  }
+  
+  .inp1,
+  .inp2 {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .sform {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sform {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+  }
+  

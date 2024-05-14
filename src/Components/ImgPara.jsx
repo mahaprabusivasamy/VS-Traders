@@ -30,10 +30,10 @@ const ImgPara = (props) => {
                     <p>
                         <span>{props.t1}</span> {showFullText || !isMobileView ? props.para1 : props.para1.substring(0, maxCharacters) + (props.para1.length > maxCharacters ? '...' : '')}
                         {isMobileView && !showFullText && props.para1.length > maxCharacters && (
-                            <button onClick={toggleText}>Read More</button>
+                            <button className='rmrl' onClick={toggleText}>Read More</button>
                         )}
                         {isMobileView && showFullText && (
-                            <button onClick={toggleText}>Read Less</button>
+                            <button className='rmrl' onClick={toggleText}>Read Less</button>
                         )}
                     </p>
                 </div>
@@ -46,10 +46,10 @@ const ImgPara = (props) => {
                     <p>
                         <span>{props.t2}</span> {showFullText || !isMobileView ? props.para2 : props.para2.substring(0, maxCharacters) + (props.para2.length > maxCharacters ? '...' : '')}
                         {isMobileView && !showFullText && props.para2.length > maxCharacters && (
-                            <button onClick={toggleText}>Read More</button>
+                            <button  className='rmrl' onClick={toggleText}>Read More</button>
                         )}
                         {isMobileView && showFullText && (
-                            <button onClick={toggleText}>Read Less</button>
+                            <button className='rmrl' onClick={toggleText}>Read Less</button>
                         )}
                     </p>
                 </div>

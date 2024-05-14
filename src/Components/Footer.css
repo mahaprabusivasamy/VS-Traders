@@ -1,0 +1,41 @@
+/* Footer.css */
+
+.footer {
+    background-color: #270e3e;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .description p {
+    margin: 0;
+  }
+  
+  .shop-name p {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 800px) {
+      .footer-content{
+        display: flex;
+        flex-direction: column;
+      }
+      .social-icons,
+      .description,
+      .shop-name{
+            padding: 10px;
+      }
+  }

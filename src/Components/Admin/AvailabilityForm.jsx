@@ -22,13 +22,22 @@ const AvailabilityForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://example.com/add-availability', availabilityData);
+            const response = await axios.post('https://vs-traders.netlify.app/post-available', availabilityData);
             console.log('Data posted successfully:', response.data);
             // Handle success, e.g., show a success message
         } catch (error) {
             console.error('Error posting data:', error);
             // Handle error, e.g., show an error message
         }
+        setAvailabilityData({
+         goat: '',
+        sheep: '',
+        countryChicken: '',
+        broiler: '',
+        crab: '',
+        prawn: ''
+        })
+        alert('data sent sucessfully');
     };
 
     return (

@@ -95,6 +95,7 @@ import ggoat from '../assets/breeds/goat.jpg';
 import sheep from '../assets/breeds/sheep.jpg';
 import Availabilty from '../Components/Availabilty';
 import axios from 'axios';
+import Footer from '../Components/Footer';
 
 export default function Mutton() {
   const [data, setData] = useState([]);
@@ -104,8 +105,8 @@ export default function Mutton() {
   const [lowestGoatPrice, setLowestGoatPrice] = useState(Infinity);
   const [highestSheepPrice, setHighestSheepPrice] = useState(-Infinity);
   const [lowestSheepPrice, setLowestSheepPrice] = useState(Infinity);
-
-  useEffect(() => {
+const [data2 ,setData2]=useState([]);
+   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://vstrader-api.onrender.com/get-price');
@@ -150,7 +151,19 @@ export default function Mutton() {
     setHighestSheepPrice(maxSheepPrice);
     setLowestSheepPrice(minSheepPrice);
   }, [data]);
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await axios.get('https://vstrader-api.onrender.com/get-available');
+        setData2(response.data);
+        // setLoading(false);
+      } catch (error) {
+        console.error('Error fetching availability:', error);
+      }
+    };
 
+    fetchAvailability();
+  }, []);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -161,6 +174,10 @@ export default function Mutton() {
   const len=(data.length)-1
   const goatPrice1 = data.length > 0 ? data[len].goat['goat-price'] : 'Loading...';
   const sheepPrice1 = data.length > 0 ? data[len].goat['sheep-price'] : 'Loading...';
+
+  const l2=(data2.length)-1;
+  const goatAvailability =  data2[l2].goat;
+  const sheepAvailability = data2[l2].sheep;
 
   return (
     <>
@@ -177,7 +194,12 @@ export default function Mutton() {
           low2={lowestSheepPrice}
           high2={highestSheepPrice}
         />
-        <Availabilty avail={'availablE'} />
+       
+        <Availabilty avail={'availablE'}
+        gv={goatAvailability}
+        //  gv={goatAvailability} sv={sheepAvailability}
+        sv={sheepAvailability}
+          />
       </div>
       <div className="quote">
         <Quotes text={'Life is too short not to enjoy a perfectly cooked piece of mutton.'} />
@@ -195,6 +217,8 @@ export default function Mutton() {
         }
         img2={sheep}
       />
+
+      <Footer/>
     </>
   );
 }
