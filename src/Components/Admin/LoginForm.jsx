@@ -19,6 +19,9 @@ const LoginForm = () => {
       setLoggedIn(true);
     } else {
       console.log('Wrong credentials');
+      alert('Wrong credentials')
+      setUsername('');
+      setPassword('');
     }
   }
   
