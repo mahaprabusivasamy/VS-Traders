@@ -19,16 +19,21 @@ function Feedback() {
       .then(response => {
         console.log('Form submitted successfully:', response.data);
         // Clearing the form fields after successful submission
-        setEmail('');
-        setMobile('');
-        setFeedback('');
+       
       })
       .catch(error => {
         console.error('Error submitting form:', error);
       })
+     
+
       .finally(() => {
         setSubmitting(false);
       });
+      setEmail('');
+      setMobile('');
+      setFeedback('');
+      alert("respond successfully");
+
   };
 
   return (
