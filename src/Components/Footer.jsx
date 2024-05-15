@@ -15,8 +15,8 @@ function Footer() {
           </a>
         </div>
         <div className="description">
-          <p>Follow us for the latest updates</p>
-          <p>on fashion and trends</p>
+          <p className='psnan'>Follow us for the latest updates</p>
+          <p>Eat healthy foods live healthy life</p>
         </div>
         <div className="shop-name">
           <p>VSTRADERS</p>

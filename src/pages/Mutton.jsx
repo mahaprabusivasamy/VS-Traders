@@ -176,8 +176,8 @@ const [data2 ,setData2]=useState([]);
   const sheepPrice1 = data.length > 0 ? data[len].goat['sheep-price'] : 'Loading...';
 
   const l2=(data2.length)-1;
-  const goatAvailability =  data2[l2].goat;
-  const sheepAvailability = data2[l2].sheep;
+  const goatAvailability =  data2.length > 0 ? data2[l2]['goat'] : 'loading';
+  const sheepAvailability = data2.length > 0 ? data2[l2]['sheep'] : 'loading';
 
   return (
     <>

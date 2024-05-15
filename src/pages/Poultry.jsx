@@ -95,8 +95,8 @@ const [broilera,setBroilera]=useState(String)
   const countryHenPrice = data.length > 0 ? data[len].chicken['countrychicken-price'] : 'Loading...';
   const broilerPrice = data.length > 0 ? data[len].chicken['broiler-price'] : 'Loading...';
   const l2=(data2.length)-1;
-  const goatAvailability = data2.length > 0 ? data2[l2]['country-chicken'] : 'loading';
-const sheepAvailability = data2.length > 0 ? data2[l2]['broiler-chicken'] : 'loading';
+  const goatAvailability = data2.length > 0 ? data2[l2]['countryChicken'] : 'loading';
+const sheepAvailability = data2.length > 0 ? data2[l2]['broiler'] : 'loading';
 
 
  

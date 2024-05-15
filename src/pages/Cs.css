@@ -13,6 +13,7 @@ body{
     margin-top: -30px;
 }
 
+
 .contact-container{
 
   margin: 0px;
@@ -92,4 +93,13 @@ body{
     color: aliceblue;
     font-family: cursive;
 
+}
+
+@media screen and (max-width:500px){
+    .contact{
+        overflow: hidden;
+    }
+.head .logo h1{
+    text-align: center;
+}
 }

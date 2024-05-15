@@ -10,6 +10,9 @@ height: auto;
 /* .image{
     padding: 10px;
 } */
+.image{
+    padding: 10px;
+}
 
 .contactInfo{
   text-align: center;
@@ -327,6 +330,7 @@ height: auto;
 .image img {
     max-width: 100%; /* Ensure image responsiveness */
     height: auto;
+ 
     margin-top: 20px;
 }
 
@@ -384,6 +388,7 @@ height: auto;
     .image,
     .priceContainer,
     .availabilty {
-        width: 100%; /* Set width to 100% for single column layout */
+        width: 100%;
+        padding: 10px; /* Set width to 100% for single column layout */
     }
 }
