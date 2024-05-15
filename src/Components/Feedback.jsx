@@ -7,10 +7,12 @@ function Feedback() {
   const [mobile, setMobile] = useState('');
   const [feedback, setFeedback] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setErrorMessage(''); // Reset error message on new submission attempt
 
     const formData = { email, mobile, feedback };
 
@@ -19,26 +21,28 @@ function Feedback() {
       .then(response => {
         console.log('Form submitted successfully:', response.data);
         // Clearing the form fields after successful submission
-       
+        setEmail('');
+        setMobile('');
+        setFeedback('');
+        alert("Respond successfully");
       })
       .catch(error => {
         console.error('Error submitting form:', error);
+        if (error.message === 'Network Error') {
+          setErrorMessage('There was a network error. Please check your internet connection and try again.');
+        } else {
+          setErrorMessage('There was an error submitting the form. Please try again later.');
+        }
       })
-     
-
       .finally(() => {
         setSubmitting(false);
       });
-      setEmail('');
-      setMobile('');
-      setFeedback('');
-      alert("respond successfully");
-
   };
 
   return (
     <div className="form-container">
       <h2>Feedback Form</h2>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
