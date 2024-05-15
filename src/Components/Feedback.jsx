@@ -17,7 +17,7 @@ function Feedback() {
     const formData = { email, mobile, feedback };
 
     // Sending form data to backend API
-    axios.post('http://vstrader-api.onrender.com/add/form', formData)
+    axios.post('https://vstrader-api.onrender.com/add/form', formData)
       .then(response => {
         console.log('Form submitted successfully:', response.data);
         // Clearing the form fields after successful submission
@@ -60,11 +60,11 @@ function Feedback() {
             type="tel"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            pattern="[0-9]{10}"
             className="form-input"
             required
           />
-          <small>Format: 123-456-7890</small>
+          <small>Format: 7540066492</small>
         </div>
         <div>
           <label>Feedback:</label>
