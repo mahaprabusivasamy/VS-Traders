@@ -15,7 +15,7 @@ function Feedback() {
     const formData = { email, mobile, feedback };
 
     // Sending form data to backend API
-    axios.post('http://vs-traders.netlify.app/add/form', formData)
+    axios.post('http://vstrader-api.onrender.com/add/form', formData)
       .then(response => {
         console.log('Form submitted successfully:', response.data);
         // Clearing the form fields after successful submission
